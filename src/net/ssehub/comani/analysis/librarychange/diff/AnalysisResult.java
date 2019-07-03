@@ -8,9 +8,9 @@ public class AnalysisResult {
 
 	@Override
 	public String toString() {
-		StringJoiner resultJoiner = new StringJoiner("[", ",\n", "]");
+		StringJoiner resultJoiner = new StringJoiner(",\n");
 		results.forEach(result -> resultJoiner.add(result.toString()));
-		return "AnalysisResult [id=" + id + ", results=\n" + resultJoiner.toString().indent(4) + "\n]";
+		return "AnalysisResult [id=" + id + ", results=[\n" + resultJoiner.toString().indent(4) + "  ]\n]";
 	}
 
 

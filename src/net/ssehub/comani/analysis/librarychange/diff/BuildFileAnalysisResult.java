@@ -9,15 +9,17 @@ public class BuildFileAnalysisResult {
 
 	@Override
 	public String toString() {
-		StringJoiner libraryChangeStringBuilder = new StringJoiner("[", ",\n", "]");
-		libraryChanges.forEach(change -> libraryChangeStringBuilder.add(change.toString()));
-		return "BuildFileAnalysisResult [buildFile=" + this.buildFile  +"libraryChanges=\n" + libraryChangeStringBuilder.toString().indent(4) + "\n]";
-		
+		StringJoiner libraryEntryJoiner = new StringJoiner(",\n");
+		libraryChanges.forEach(change -> libraryEntryJoiner.add(change.toString()));
+		return "BuildFileAnalysisResult [buildFile=" + this.buildFile + " libraryChanges=[\n"
+				+ libraryEntryJoiner.toString().indent(4) + "  ]\n]";
+
 	}
 
 	private List<LibraryEntry> libraryChanges;
 
 	public BuildFileAnalysisResult(String buildFile, List<LibraryEntry> libraryChanges) {
+		this.buildFile = buildFile;
 		this.libraryChanges = libraryChanges;
 	}
 
